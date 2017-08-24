@@ -8,13 +8,11 @@ import { connect } from 'dva'
 import { Table, Button, Modal } from 'antd'
 
 import EditModal from './Modal2'
-import {
-
-} from '../../components'
+import {DropOption} from '../../components'
 
 const confirm = Modal.confirm
 const sysMenu = ({ location, dispatch, sysMenu, loading }) => {
-  const { list, currentItem, modalVisible, modalType, selectedRowKeys, CreatItem } = sysMenu
+  const { list, currentItem, modalVisible, modalType, selectedRowKeys, CreatItem ,code} = sysMenu
   const ModalOpts = {
     item: modalType === 'create' ? {} : currentItem,
     visible: modalVisible,
@@ -101,7 +99,7 @@ const sysMenu = ({ location, dispatch, sysMenu, loading }) => {
   return (
     <div className="content-inner">
      <div style={{ marginBottom: 16 }}>
-       <Button size="large" type="ghost" onClick={onAdd}>Create</Button>
+       {code.update&&<Button size="large" type="ghost" onClick={onAdd}>Create</Button>}
      </div>
     <Table columns={columns}
       dataSource={list}

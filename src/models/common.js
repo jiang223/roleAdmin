@@ -1,19 +1,12 @@
 import modelExtend from 'dva-model-extend'
 import { message } from 'antd'
-
+import  {getCode} from  '../services/app'
 const model = {
   reducers: {
     updateState (state, { payload }) {
       return {
         ...state,
         ...payload,
-      }
-    },
-    mess (state, { payload }) {
-      alert(payload.message)
-      message.success(payload.message)
-      return {
-
       }
     },
   },
@@ -32,6 +25,22 @@ const pageModel = modelExtend(model, {
     },
   },
 
+  effects: {
+    *mess ({ payload }) {
+      message.success(payload.message)
+    },
+    *getCode ({ payload = {} }, { call, put }) {
+      const data = yield call(getCode, payload)
+      if (data) {
+        yield put({
+          type: 'updateState',
+          payload: {
+            code:data.data,
+          },
+        })
+      }
+    }
+  },
   reducers: {
     querySuccess (state, { payload }) {
       const { list, pagination } = payload

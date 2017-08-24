@@ -13,6 +13,9 @@ const Menus = ({ siderFold, darkTheme, location, handleClickNavMenu, navOpenKeys
   // 递归生成菜单
   const getMenus = (menuTreeN, siderFoldN) => {
     console.log(menuTreeN)
+    if (menuTreeN==null){
+      menuTreeN=[];
+    }
     return menuTreeN.map(item => {
       if (item.children) {
         if (item.mpid) {

@@ -9,7 +9,13 @@ export async function login (params) {
     data: params,
   })
 }
-
+export async function getCode (params) {
+  return request({
+    url: `${user.replace('/:id', '')}/code`,
+    method: 'get',
+    data: params,
+  })
+}
 export async function logout (params) {
   return request({
     url: userLogout,

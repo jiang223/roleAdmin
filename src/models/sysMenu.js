@@ -11,6 +11,7 @@ export default modelExtend(pageModel, {
   namespace: 'sysMenu',
 
   state: {
+    code:{update:false},
     currentItem: {},
     modalVisible: false,
     modalType: 'create',
@@ -25,6 +26,10 @@ export default modelExtend(pageModel, {
           dispatch({
             type: 'query',
             payload: location.query,
+          })
+          dispatch({
+            type: 'getCode',
+            payload:{url:location.pathname},
           })
         }
       })
@@ -84,7 +89,6 @@ export default modelExtend(pageModel, {
       const id = yield select(({ sysMenu }) => sysMenu.currentItem.id)
       const newUser = { ...payload, id }
       const data = yield call(update, newUser)
-      console.log(data)
       if (data.success) {
         console.log(data)
         yield put({ type: 'mess', payload: data })

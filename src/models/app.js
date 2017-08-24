@@ -9,6 +9,7 @@ const { prefix } = config
 export default modelExtend(pageModel, {
   namespace: 'app',
   state: {
+    menu:[{name:"用户管理",id:50026,url:"/sys/user"}],
     user: {},
     menuPopoverVisible: false,
     siderFold: localStorage.getItem(`${prefix}siderFold`) === 'true',
@@ -19,14 +20,13 @@ export default modelExtend(pageModel, {
   subscriptions: {
     setup ({ dispatch }) {
       dispatch({ type: 'query' })
-      dispatch({ type: 'menu' })
-      let tid
+/*      let tid
       window.onresize = () => {
         clearTimeout(tid)
         tid = setTimeout(() => {
           dispatch({ type: 'changeNavbar' })
         }, 300)
-      }
+      }*/
     },
   },
   effects: {
@@ -46,12 +46,15 @@ export default modelExtend(pageModel, {
     }, { call, put }) {
       const data = yield call(query, parse(payload))
       console.log(data)
+      yield put({
+        type: 'menu',
+      })
       if (data.success && data.data) {
         yield put({
           type: 'querySuccess',
           payload: data.data,
         })
-        if (location.pathname === '/login') {
+        if (location.pathname === '/login'||location.pathname === '/') {
           yield put(routerRedux.push('/dashboard'))
         }
       } else {
@@ -64,7 +67,7 @@ export default modelExtend(pageModel, {
 
     *logout ({
       payload,
-    }, { call, put }) {
+    }, { call, put } ) {
       const data = yield call(logout, parse(payload))
       if (data.success) {
         yield put({ type: 'query' })
