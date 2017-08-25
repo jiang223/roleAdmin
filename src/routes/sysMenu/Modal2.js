@@ -66,7 +66,8 @@ const editModal = ({
                 },
               ],
             })(<Select mode="combobox">
-            <Option value="add">add</Option>
+            <Option value="menu">menu</Option>
+            <Option value="create">create</Option>
             <Option value="update">update</Option>
             <Option value="delete">delete</Option>
           </Select>)}

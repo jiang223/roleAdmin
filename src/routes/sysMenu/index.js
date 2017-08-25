@@ -82,7 +82,7 @@ const sysMenu = ({ location, dispatch, sysMenu, loading }) => {
     key: 'operation',
     width: 100,
     render: (text, record) => {
-      return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update' }||true, { key: '2', name: 'Delete' }, { key: '3', name: 'Create' }]} />
+      return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update',isUse:code.update }||true, { key: '2', name: 'Delete',isUse:code.delete }, { key: '3', name: 'Create',isUse:code.create }]} />
     },
   },
   ]

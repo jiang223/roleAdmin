@@ -3,7 +3,14 @@ import PropTypes from 'prop-types'
 import { Dropdown, Button, Icon, Menu } from 'antd'
 
 const DropOption = ({ onMenuClick, menuOptions = [], buttonStyle, dropdownProps }) => {
-  const menu = menuOptions.map(item => <Menu.Item key={item.key}>{item.name}</Menu.Item>)
+  const menu = menuOptions.map(item => {
+      if(!item.hasOwnProperty("isUse")  || item.isUse == true)
+      //if(true)
+      {
+        return (<Menu.Item key={item.key}>{item.name}</Menu.Item>)
+      }
+    }
+  )
   return (<Dropdown
     overlay={<Menu onClick={onMenuClick}>{menu}</Menu>}
     {...dropdownProps}
@@ -12,6 +19,7 @@ const DropOption = ({ onMenuClick, menuOptions = [], buttonStyle, dropdownProps 
       <Icon style={{ marginRight: 2 }} type="bars" />
       <Icon type="down" />
     </Button>
+
   </Dropdown>)
 }
 
