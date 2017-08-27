@@ -74,15 +74,26 @@ const editModal = ({
 
         </FormItem>
         <FormItem label="路径" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('url',
+        {getFieldDecorator('url',
+          {
+            initialValue: item.url,
+            rules: [
+              {
+
+              },
+            ],
+          })(<Input/>)}
+      </FormItem>
+        <FormItem label="method" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('method',
             {
-              initialValue: item.url,
+              initialValue: item.method,
               rules: [
                 {
 
                 },
               ],
-            })(<TextArea placeholder="Autosize height with minimum and maximum number of lines" autosize={{ minRows: 2, maxRows: 6 }} />)}
+            })(<TextArea placeholder="Autosize height with minimum and maximum number of lines" autosize={{ minRows: 2, maxRows: 8 }} />)}
         </FormItem>
         <FormItem label="排序" hasFeedback {...formItemLayout}>
           {getFieldDecorator('sort', {
