@@ -64,6 +64,16 @@ const modal = ({
             ],
           })(<Input />)}
         </FormItem>
+        <FormItem label="密码" hasFeedback {...formItemLayout}>
+          {getFieldDecorator('password', {
+            initialValue: item.password,
+            rules: [
+              {
+                required: true,
+              },
+            ],
+          })(<Input type="password"/>)}
+        </FormItem>
         <FormItem label="姓名" hasFeedback {...formItemLayout}>
           {getFieldDecorator('realName', {
             initialValue: item.realName,
