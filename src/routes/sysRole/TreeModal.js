@@ -37,7 +37,7 @@ const modal = ({
         onCheck={onCheck}
             defaultCheckedKeys={state.checkedKeys}
       >
-        {loop(treeDate)}
+        {loop(treeDate) }
       </Tree>
     </Modal>
   )

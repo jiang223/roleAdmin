@@ -8,7 +8,7 @@ import Filter from './Filter'
 import TreeModal from './TreeModal'
 import Modal from './Modal'
 const SysRole = ({ location, dispatch, sysRole, loading }) => {
-  const { list, pagination, currentItem, modalVisible, modalVisible2, modalType, isMotion, selectedRowKeys, treeDate, state } = sysRole
+  const { list, pagination, currentItem, modalVisible, modalVisible2, modalType, isMotion, selectedRowKeys, treeDate, state,code } = sysRole
   const { pageSize } = pagination
   const treeModalProps = {
     state,
@@ -53,6 +53,7 @@ const SysRole = ({ location, dispatch, sysRole, loading }) => {
     },
   }
   const listProps = {
+    code:code,
     dataSource: list,
     loading: loading.effects['sysRole/query'],
     pagination,
@@ -105,6 +106,7 @@ const SysRole = ({ location, dispatch, sysRole, loading }) => {
     },
   }
   const filterProps = {
+    code:code,
     isMotion,
     filter: {
       ...location.query,

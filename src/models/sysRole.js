@@ -8,6 +8,7 @@ const { prefix } = config
 export default modelExtend(pageModel, {
   namespace: 'sysRole',
   state: {
+    code:{},
     currentItem: {},
     modalVisible: false,
     modalType: 'create',
@@ -25,6 +26,10 @@ export default modelExtend(pageModel, {
           dispatch({
             type: 'query',
             payload: location.query,
+          })
+          dispatch({
+            type: 'getCode',
+            payload:{url:location.pathname },
           })
         }
       })

@@ -9,7 +9,7 @@ import { Link } from 'dva/router'
 
 const confirm = Modal.confirm
 
-const List = ({ onDeleteItem, onEditItem, onUpdateFunction, isMotion, location, ...tableProps }) => {
+const List = ({ onDeleteItem, onEditItem, onUpdateFunction, isMotion, location, ...tableProps,code}) => {
   const handleMenuClick = (record, e) => {
     if (e.key === '1') {
       onEditItem(record)
@@ -41,7 +41,7 @@ const List = ({ onDeleteItem, onEditItem, onUpdateFunction, isMotion, location, 
       key: 'operation',
       width: 100,
       render: (text, record) => {
-        return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update' }, { key: '2', name: 'Delete' }, { key: '3', name: 'UpdateFunction' }]} />
+        return <DropOption onMenuClick={e => handleMenuClick(record, e)} menuOptions={[{ key: '1', name: 'Update',isUse:code.update }, { key: '2', name: 'Delete' ,isUse:code.delete}, { key: '3', name: 'UpdateFunction',isUse:code.updateFunction }]} />
       },
     },
   ]

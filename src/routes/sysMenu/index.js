@@ -99,7 +99,7 @@ const sysMenu = ({ location, dispatch, sysMenu, loading }) => {
   return (
     <div className="content-inner">
      <div style={{ marginBottom: 16 }}>
-       {code.update&&<Button size="large" type="ghost" onClick={onAdd}>Create</Button>}
+       {code.create&&<Button size="large" type="ghost" onClick={onAdd}>Create</Button>}
      </div>
     <Table columns={columns}
       dataSource={list}

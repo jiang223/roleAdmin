@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import { FilterItem } from '../../components'
-import { Form, Button, Row, Col, DatePicker, Input, Cascader, Switch } from 'antd'
-import city from '../../utils/city'
+import { Form, Button, Row, Col, DatePicker, Input, Switch } from 'antd'
 
 const Search = Input.Search
 const { RangePicker } = DatePicker
@@ -14,12 +12,9 @@ const ColProps = {
   },
 }
 
-const TwoColProps = {
-  ...ColProps,
-  xl: 96,
-}
 
 const Filter = ({
+  code,
   onAdd,
   isMotion,
   switchIsMotion,
@@ -75,14 +70,13 @@ const Filter = ({
   if (filter.createTime && filter.createTime[1]) {
     initialCreateTime[1] = moment(filter.createTime[1])
   }
-
   return (
     <Row gutter={20}>
       <Col {...ColProps} span={4}>{getFieldDecorator('name', { initialValue: name })(<Search placeholder="Search Name" size="large" onSearch={handleSubmit} />)}</Col>
       <Col {...ColProps} span={2} offset={1}><Button type="primary" size="large" onClick={handleSubmit}>Search</Button></Col>
       <Col {...ColProps} span={8} push={14}>
           <Switch style={{ marginRight: 15 }} size="large" defaultChecked={isMotion} onChange={switchIsMotion} checkedChildren={'Motion'} unCheckedChildren={'Motion'} />
-        <Button size="large" type="ghost" onClick={onAdd}>Create</Button>
+          {code.update&&<Button size="large" type="ghost" onClick={onAdd}>Create</Button>}
       </Col>
     </Row>
   )
