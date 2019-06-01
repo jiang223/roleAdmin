@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Select, Form, Input, InputNumber, Radio, Modal, Cascader, Upload, Button, Icon, DatePicker } from 'antd'
+import { Select, Form, Input, InputNumber, Radio, Modal,  Upload, Button, Icon, DatePicker } from 'antd'
 import city from '../../utils/city'
 import moment from 'moment'
-
 const FormItem = Form.Item
 const formItemLayout = {
   labelCol: {

@@ -20,6 +20,11 @@ export default {
        "target": "http://localhost:8080",
        "changeOrigin": true,
        "pathRewrite": { "^/api/v2" : "" }
+     },
+     "/updload/file/": {
+       "target": "http://localhost:8080",
+       "changeOrigin": true,
+       "pathRewrite": { "^" : "" }
      }
    },
   "env": {

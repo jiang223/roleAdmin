@@ -101,7 +101,6 @@ const editModal = ({
             rules: [
               {
                 required: true,
-                message: 'The input is not valid phone!',
               },
             ],
           })(<InputNumber />)}

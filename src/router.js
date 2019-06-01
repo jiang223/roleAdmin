@@ -30,7 +30,7 @@ const Routers = function ({ history, app }) {
             }, 'dashboard')
           },
         },
-        {
+       /* {
           path: 'menuss',
           getComponent (nextState, cb) {
             require.ensure([], require => {
@@ -38,7 +38,7 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/menuss/'))
             }, 'treetable')
           },
-        },
+        },*/
         {
           path: 'sys/menu',
           getComponent (nextState, cb) {
@@ -58,12 +58,48 @@ const Routers = function ({ history, app }) {
           },
         },
         {
+          path: 'news',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/news'))
+              cb(null, require('./routes/news'))
+            }, 'news')
+          },
+        },
+        {
+          path: 'ncase',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/ncase'))
+              cb(null, require('./routes/ncase'))
+            }, 'ncase')
+          },
+        },
+        {
+          path: 'news/:id',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/newsdetail'))
+              cb(null, require('./routes/news/ueditor'))
+            }, 'newsDetail')
+          },
+        },
+        {
           path: 'sys/user',
           getComponent (nextState, cb) {
             require.ensure([], require => {
               registerModel(app, require('./models/sysUser'))
               cb(null, require('./routes/sysUser/'))
             }, 'sysUser')
+          },
+        },
+        {
+          path: 'sys/parm',
+          getComponent (nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/sysParm'))
+              cb(null, require('./routes/sysParm/'))
+            }, 'sysParm')
           },
         },
         {
@@ -83,14 +119,16 @@ const Routers = function ({ history, app }) {
               cb(null, require('./routes/login/'))
             }, 'login')
           },
-        }, {
+        },
+      /*  {
           path: 'request',
           getComponent (nextState, cb) {
             require.ensure([], require => {
               cb(null, require('./routes/request/'))
             }, 'request')
           },
-        }, {
+        },*/
+        {
           path: 'UIElement/iconfont',
           getComponent (nextState, cb) {
             require.ensure([], require => {

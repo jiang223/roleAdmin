@@ -28,8 +28,26 @@ module.exports = {
   },
   sys: {
     sysMenuPage: `/api/v2/sysMenu`,
+    sysParm: `/api/v2/sysParm`,
     sysMenu: `/api/v2/sysMenu`,
     sysRole: `/api/v2/sysRole`,
     sysUser: `/api/v2/sysUser`,
   },
+  /*
+  *字典管理路由
+  */
+  sysParm:{
+    sysParmUrl: `/api/v2/sysParm`,
+  },
+  /*
+ *字典管理路由
+ */
+  news:{
+    newsUrl: `/api/v2/news`,
+  },
+  ncase:{
+    ncaseUrl: `/api/v2/case`,
+  }
+
+
 }

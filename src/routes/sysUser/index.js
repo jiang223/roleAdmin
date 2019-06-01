@@ -2,20 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { routerRedux } from 'dva/router'
 import { connect } from 'dva'
-import { Row, Col, Button, Popconfirm } from 'antd'
 import List from './List'
 import Filter from './Filter'
 import Modal from './Modal'
 
 const SysUser = ({ location, dispatch, sysUser, loading }) => {
-  const { list, pagination, currentItem, modalVisible, modalType, isMotion, selectedRowKeys, roleList } = sysUser
+  const { list, pagination, currentItem, modalVisible, modalType, isMotion, roleList } = sysUser
   const { pageSize } = pagination
   const modalProps = {
     roleList,
     item: modalType === 'create' ? {} : currentItem,
     visible: modalVisible,
     maskClosable: false,
-    confirmLoading: loading.effects['user/update'],
+    confirmLoading: loading.effects['sysUser/'+modalType],
     title: `${modalType === 'create' ? 'Create User' : 'Update User'}`,
     wrapClassName: 'vertical-center-modal',
     onOk (data) {
@@ -63,7 +62,7 @@ const SysUser = ({ location, dispatch, sysUser, loading }) => {
         },
       })
     },
-    rowSelection: {
+/*    rowSelection: {
       selectedRowKeys,
       onChange: (keys) => {
         dispatch({
@@ -73,7 +72,7 @@ const SysUser = ({ location, dispatch, sysUser, loading }) => {
           },
         })
       },
-    },
+    },*/
   }
 
   const filterProps = {
@@ -89,17 +88,6 @@ const SysUser = ({ location, dispatch, sysUser, loading }) => {
           page: 1,
           pageSize,
         },
-      }))
-    },
-    onSearch (fieldsValue) {
-      fieldsValue.keyword.length ? dispatch(routerRedux.push({
-        pathname: '/user',
-        query: {
-          field: fieldsValue.field,
-          keyword: fieldsValue.keyword,
-        },
-      })) : dispatch(routerRedux.push({
-        pathname: '/user',
       }))
     },
     onAdd () {

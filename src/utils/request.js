@@ -17,6 +17,7 @@ const fetch = (options) => {
   const cloneData = lodash.cloneDeep(data)
 
   try {
+
     let domin = ''
     if (url.match(/[a-zA-z]+:\/\/[^/]*/)) {
       domin = url.match(/[a-zA-z]+:\/\/[^/]*/)[0]
